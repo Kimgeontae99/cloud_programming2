@@ -137,4 +137,4 @@ migrations/
 
 
 #media
-_media/
+_media/!/.gitignore
