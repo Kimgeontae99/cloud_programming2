@@ -1,17 +1,26 @@
-from django.shortcuts import render
+#from django.shortcuts import render
+from django.views.generic import ListView,DeleteView
 from .models import Post
 
+class PostList(ListView):
+    model = Post
+    ordering = '-pk'
+#    template_name = 'blog/index.html'
 
-def index(request):
-    posts = Post.objects.all().order_by('-pk')
+class PostDetail(DeleteView):
+    model = Post
 
-    return render(
-        request,
-        'blog/index.html',
-        {
-            'posts': posts,
-        }
-    )
+
+#def index(request):
+#    posts = Post.objects.all().order_by('-pk')
+#
+#    return render(
+#        request,
+#        'blog/index.html',
+#        {
+#           'posts': posts,
+#       }
+#    )
 
 
 def single_post_page(request, pk):
